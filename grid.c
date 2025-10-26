@@ -9,7 +9,7 @@
 
 void grid_free(char **grid)
 {
-    for (int i = 0; i < HEIGHT; i++)
+    for (size_t i = 0; i < HEIGHT; i++)
         free(grid[i]);
     free(grid);
 }
@@ -29,8 +29,8 @@ static void sleep_ms(long ms)
 void display(char** grid, char life, char death)
 {
     printf("\033[H\033[J");
-    for (int j = 1; j < HEIGHT - 1; j++) {
-        for (int i = 1; i < WIDTH - 1; i++)
+    for (size_t j = 1; j < HEIGHT - 1; j++) {
+        for (size_t i = 1; i < WIDTH - 1; i++)
             if (grid[j][i])
                 putchar(life);
             else
@@ -52,7 +52,7 @@ char **grid_init(void)
         exit(EXIT_FAILURE);
     }
 
-    for (int i = 0; i < HEIGHT; i++) {
+    for (size_t i = 0; i < HEIGHT; i++) {
         grid[i] = calloc(WIDTH, sizeof(char));
         if (!grid[i]) {
             perror("malloc");
@@ -60,7 +60,6 @@ char **grid_init(void)
             exit(EXIT_FAILURE);
         }
     }
-
     return grid;
 }
 
@@ -140,7 +139,7 @@ void grid_pattern(char **grid)
 void grid_random(char **grid)
 {
     srand(time(NULL));
-    for (int j = 1; j < HEIGHT - 1; j++)
-        for (int i = 1; i < WIDTH - 1; i++)
+    for (size_t j = 1; j < HEIGHT - 1; j++)
+        for (size_t i = 1; i < WIDTH - 1; i++)
                 grid[j][i] = rand() % 2;
 }

@@ -34,7 +34,6 @@ int main(int argc, char **argv)
     else
         grid_random(grid);
 
-        //display(grid, living_cells, dead_cells);
     while (1)
     {
         display(grid, living_cells, dead_cells);

@@ -5,9 +5,9 @@
 #include "grid.h"
 #include "generation.h"
 
-static int live_or_die(char **grid, const int j, const int i)
+static int live_or_die(char **grid, const size_t j, const size_t i)
 {
-    int neighbors = 0;
+    size_t neighbors = 0;
     for (int k = -1; k <= 1; k += 1)
     {
         for (int l = -1; l <= 1; l += 1)
@@ -30,8 +30,8 @@ skip:
 
 char** next_generation(char **grid, char **new_grid)
 {
-    for (int j = 1; j < HEIGHT - 1; j++)
-        for (int i = 1; i < WIDTH - 1; i++)
+    for (size_t j = 1; j < HEIGHT - 1; j++)
+        for (size_t i = 1; i < WIDTH - 1; i++)
             new_grid[j][i] = live_or_die(grid, j, i);
 
     return new_grid;
